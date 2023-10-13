@@ -30,8 +30,11 @@
         <div class="container">
             <a class="navbar-brand" href="#">Home List</a>
             <a href="{{ url('/equipment') }}" class="btn btn-outline-info ml-auto">Dashboard</a>
+            <a href="{{ url('/login') }}" class="btn btn-outline-info ml-2">Login</a>
         </div>
     </nav>
+    
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <div class="container mt-4">
         <table class="table table-hover">
