@@ -45,6 +45,7 @@
                         <label for="u_image">Image:</label>
                         <input type="file" class="form-control-file" id="u_image" name="u_image">
                     </div>
+                    <div class="mt-4 border p-2" id="imagePreview"></div>
                     <div class="form-group">
                         <label for="u_name">NameEquipment:</label>
                         <input type="text" class="form-control" id="u_name" name="u_name">
@@ -52,12 +53,27 @@
                     <div class="text-center">
                         <a href="{{ url('/equipment') }}" class="btn btn-outline-primary mx-2">Back</a>
                         @csrf
-                        <button type="submit" class="btn btn-outline-success mx-2">Submit</button>
+                        <button type="submit" class="btn btn-outline-success mx-2">upload</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('u_image').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                const preview = document.getElementById('imagePreview');
+                preview.innerHTML = `
+                    <img src="${reader.result}" alt="Preview" style="max-width: 170px;">
+                `;
+            }
+
+            reader.readAsDataURL(file);
+        });
+    </script>
 </body>
 
 </html>
