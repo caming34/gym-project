@@ -44,7 +44,11 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
-
+    protected $routeMiddleware = [
+        // ...
+        'auth.redirect' => \App\Http\Middleware\RedirectIfNotAuthenticated::class,
+    ];
+    
     /**
      * The application's middleware aliases.
      *

@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Equipment;
 use Illuminate\Http\Request;
-
 
 class HomeController extends Controller
 {
     /**
-     * Display a listing of the resourHomee.
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        $homes = Equipment::all();
-        return view('index_Gym', compact('homes'));
+        return view('home');
     }
 }
