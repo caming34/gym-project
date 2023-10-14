@@ -40,7 +40,7 @@
             </div>
         </div>
     </nav>
-<br>
+    <br>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <table class="table table-hover">
@@ -50,7 +50,8 @@
                         <th>Image</th>
                         <th>Name</th>
                         <th>Status</th>
-                        <th colspan="2">Action</th>
+                        <th>Booker's Name</th>
+                        <th colspan="3">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,6 +63,13 @@
                                 style="max-width: 170px;"></td>
                         <td> {{ $tmp['name'] }}</td>
                         <td> {{ $tmp['status'] }}</td>
+                        <td> {{ $tmp['user'] }}</td>
+                        <td>
+                            <form method="post" action="{{ route('equipment.book', ['id' => $tmp['id']]) }}">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-outline-info">Book</button>
+                            </form>
+                        </td>
                         <td>
                             <form method="get"
                                 action="{{ action('App\Http\Controllers\EquipmentController@edit', $tmp['id']) }}">

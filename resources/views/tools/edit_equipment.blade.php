@@ -35,14 +35,20 @@
 
                 <div class="form-group">
                     <label for="u_image">Image:</label>
-                    <input type="file" class="form-control-file" id="u_image" name="u_image">
+                    <input type="file" class="form-control-file" id="u_image" name="u_image"
+                        value="{{ $tmp->image }}">
                 </div>
-
-                <div class="mt-4 border p-2" id="imagePreview"></div>
 
                 <div class="form-group">
                     <label for="u_name">Name Equipment:</label>
-                    <input type="text" class="form-control" id="u_name" name="u_name">
+                    <input type="text" class="form-control" id="u_name" name="u_name"
+                        value="{{ $tmp->name }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="u_status">Status:</label>
+                    <input type="text" class="form-control" id="u_status" name="u_status"
+                        value="{{ $tmp->status }}">
                 </div>
 
                 <div class="text-center mt-3">
@@ -53,12 +59,13 @@
         </div>
     </div>
 
+
     <script>
-        document.getElementById('u_image').addEventListener('change', function (event) {
+        document.getElementById('u_image').addEventListener('change', function(event) {
             const file = event.target.files[0];
             const reader = new FileReader();
 
-            reader.onload = function () {
+            reader.onload = function() {
                 const preview = document.getElementById('imagePreview');
                 preview.innerHTML = `
                     <img src="${reader.result}" alt="Preview" style="max-width: 170px;">

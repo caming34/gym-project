@@ -29,15 +29,19 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">Home List</a>
-            <?php if(Auth::check()): ?>
+            @if (Auth::check())
                 <span class="navbar-text mr-2">
-                    Welcome, <?php echo Auth::user()->name; ?>
+                    Welcome, {{ Auth::user()->name }}
                 </span>
-                <a href="{{ url('/logout') }}" class="btn btn-outline-info ml-2">Logout</a>
-            <?php else: ?>
+                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-info ml-2">Logout</button>
+                </form>
+            @else
                 <a href="{{ url('/login') }}" class="btn btn-outline-info ml-2">Login</a>
                 <a href="{{ url('/register') }}" class="btn btn-outline-info ml-2">Register</a>
-            <?php endif; ?>
+            @endif
+
         </div>
     </nav>
 
