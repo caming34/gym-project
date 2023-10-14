@@ -29,7 +29,15 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">Home List</a>
-            <a href="{{ url('/equipment') }}" class="btn btn-outline-info ml-auto">Dashboard</a>
+            <?php if(Auth::check()): ?>
+                <span class="navbar-text mr-2">
+                    Welcome, <?php echo Auth::user()->name; ?>
+                </span>
+                <a href="{{ url('/logout') }}" class="btn btn-outline-info ml-2">Logout</a>
+            <?php else: ?>
+                <a href="{{ url('/login') }}" class="btn btn-outline-info ml-2">Login</a>
+                <a href="{{ url('/register') }}" class="btn btn-outline-info ml-2">Register</a>
+            <?php endif; ?>
         </div>
     </nav>
 
